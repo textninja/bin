@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+if ARGV.empty?
+  SERVE_DIR=Dir.pwd
+else
+  SERVE_DIR=File.expand_path(ARGV[0])
+end
+
+`docker run --rm -p 8080:80 -v "#{SERVE_DIR}":/usr/local/apache2/htdocs/ httpd:2.4-alpine`
